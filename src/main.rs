@@ -1,13 +1,17 @@
-const FERRIS_HEAD: &'static str = r#"    _~^~^~_
+const FERRIS_HEAD: &str = r#"    _~^~^~_
 \) /  o o  \ (/"#;
-const FERRIS_BODY: &'static str = "  |         |";
-const FERRIS_BOTTOM: &'static str = r#"  '_   ¬   _'
+const FERRIS_BODY: &str = "  |         |";
+const FERRIS_BOTTOM: &str = r#"  '_   ¬   _'
   / '-----' \"#;
 
 fn main() {
-    let n = 3;
+    let length = std::env::args()
+        .nth(1)
+        .expect("No length given")
+        .parse::<usize>()
+        .expect("Not integer given");
     println!("{}", FERRIS_HEAD);
-    for _ in 0..n {
+    for _ in 0..length {
         println!("{}", FERRIS_BODY);
     }
     println!("{}", FERRIS_BOTTOM);
